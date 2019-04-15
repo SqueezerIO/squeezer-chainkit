@@ -22,7 +22,7 @@
     "type": "git",
     "url": "https://github.com/SqueezerIO/squeezer-chainkit.git"
   },
-  "author": "Ionut Vaida",
+  "author": "Nick Chisiu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/SqueezerIO/squeezer-chainkit/issues"
