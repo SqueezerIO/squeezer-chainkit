@@ -4,8 +4,7 @@ const request = require('request');
 
 class BlockchainConnector {
   constructor(options) {
-    const accessKey = options.accessKey;
-    const environment = options.environment;
+    const { accessKey, environment } = options;
 
     if (!accessKey) throw new Error('missing access key');
     if (!environment) throw new Error('missing environment');
@@ -15,10 +14,11 @@ class BlockchainConnector {
     this.accessKey = accessKey;
 
     if (environment === 'test')
-      this.apiGatewayBaseUrl = 'https://p251st0hh1.execute-api.us-east-1.amazonaws.com/dev';
+      this.apiGatewayBaseUrl = 'https://chainkit.api.squeezer.io/dev';
 
     if (environment === 'live')
-      this.apiGatewayBaseUrl = 'https://rvtt4vqrqj.execute-api.us-east-1.amazonaws.com/prod'
+      this.apiGatewayBaseUrl = '';
+    throw new Error('live environment not yet available');
   }
 
   walletTypes(callback) {
@@ -63,7 +63,7 @@ class BlockchainConnector {
   }
 
   getTransactions(options, callback) {
-    const walletId = options.walletId;
+    const { walletId } = options;
     request({
       url: `${this.apiGatewayBaseUrl}/v1/wallet/${walletId}/transactions`,
       method: 'GET'
@@ -74,7 +74,7 @@ class BlockchainConnector {
   }
 
   getBalance(options, callback) {
-    const walletId = options.walletId;
+    const { walletId } = options;
     request({
       url: `${this.apiGatewayBaseUrl}/v1/wallet/${walletId}/balance`,
       method: 'GET'
