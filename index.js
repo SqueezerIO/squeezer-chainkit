@@ -40,7 +40,8 @@ class ChainKit {
   walletTypes(callback) {
     request({
       url: `${this.apiGatewayBaseUrl}/v1/wallet/types`,
-      method: 'GET'
+      method: 'GET',
+      json: true
     }, (error, response, body) => {
       if (error) callback(error);
       callback(null, body);
@@ -82,7 +83,8 @@ class ChainKit {
     const { walletId } = options;
     request({
       url: `${this.apiGatewayBaseUrl}/v1/wallet/${walletId}/transactions`,
-      method: 'GET'
+      method: 'GET',
+      json: true
     }, (error, response, body) => {
       if (error) callback(error);
       callback(null, body);
@@ -93,7 +95,8 @@ class ChainKit {
     const { walletId } = options;
     request({
       url: `${this.apiGatewayBaseUrl}/v1/wallet/${walletId}/balance`,
-      method: 'GET'
+      method: 'GET',
+      json: true
     }, (error, response, body) => {
       if (error) callback(error);
       callback(null, body);

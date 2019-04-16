@@ -1,6 +1,6 @@
 {
   "name": "squeezer-chainkit",
-  "version": "1.0.4-beta",
+  "version": "1.0.6-beta",
   "description": "Squeezer agnostic blockchain integration",
   "keywords": [
     "blockchain",
