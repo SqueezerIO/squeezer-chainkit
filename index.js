@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-class BlockchainConnector {
+class ChainKit {
   constructor(options) {
     const { accessKey, environment } = options;
 
@@ -13,12 +13,28 @@ class BlockchainConnector {
     this.environment = environment;
     this.accessKey = accessKey;
 
-    if (environment === 'test')
+    if (environment === 'test') {
       this.apiGatewayBaseUrl = 'https://chainkit.api.squeezer.io/dev';
+    }
 
-    if (environment === 'live')
+    if (environment === 'live') {
       this.apiGatewayBaseUrl = '';
-    throw new Error('live environment not yet available');
+      throw new Error('live environment not yet available');
+    }
+  }
+
+  configureItnUrl(options, callback) {
+    request({
+      url: `${this.apiGatewayBaseUrl}/v1/itn/configure/url`,
+      method: 'POST',
+      json: {
+        accessKey: this.accessKey,
+        url: options.url
+      }
+    }, (error, response, body) => {
+      if (error) callback(error);
+      callback(null, body);
+    });
   }
 
   walletTypes(callback) {
@@ -85,4 +101,4 @@ class BlockchainConnector {
   }
 }
 
-module.exports = BlockchainConnector;
+module.exports = ChainKit;

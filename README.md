@@ -1,13 +1,10 @@
 ### squeezer-chainkit
 Agnostic blockchain integration
 
-The main usage of the ChainKit is to unify top blockchains interfaces into a single normalized API interface , therefore you can build blockchain apps easily without digging into all blockchain infrastructures
+The main usage of the ChainKit is to unify top blockchains interfaces into a single normalized API interface , therefore you can build blockchain apps easily without digging into blockchain infrastructure
 
 Check the Squeezer ChainKit Gateway API Documentation:
 
-[Squeezer ChainKit Gateway - Test](https://squeezerblockchaingatewa-squeezerdeploymentbucket-1rzodet1yc0k1.s3.amazonaws.com/swagger-ui/index.html)
-
-[Squeezer ChainKit Gateway - Production (in development)](https://squeezerblockchaingatewa-squeezerdeploymentbucket-13zh6zoa8nt41.s3.amazonaws.com/swagger-ui/index.html)
 
 <a name="table" />
 
@@ -54,6 +51,31 @@ The ITN system will notify your server when you receive a transaction and when a
 
 Please check the ``Squeezer Blockchain Gateway API Documentation``->``
 Configure ITN callback url``
+
+```javascript
+chainKit.createWallet(options, callback)
+```
+- ``options`` - ***required***.
+- ``options.url`` - ***required***. ITN callback url (``http://example.org/itn/callback``).
+- ``callback`` - ***required*** callback function, accepts 2 values (``error``,``result``)
+
+Example request
+```javascript
+chainKit.configureItnUrl({
+  url: 'http://example.org/itn/callback'
+}, (err, response) => {
+  console.log(response)
+});
+```
+
+Example response from server
+```json
+{
+  "walletId": "8193d025-6430-496e-abf3-88f06b51889c",
+  "address": "0xbd61ef790C3eaf4D0c4D4bE3558F8a501863525f",
+  "token": "41dbecfb0454183a4c7a9be8b874e1785b5..."
+}
+```
 
 ITN JSON object:
 
