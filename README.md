@@ -53,7 +53,7 @@ Please check the ``Squeezer Blockchain Gateway API Documentation``->``
 Configure ITN callback url``
 
 ```javascript
-chainKit.createWallet(options, callback)
+chainKit.configureItnUrl(options, callback)
 ```
 - ``options`` - ***required***.
 - ``options.url`` - ***required***. ITN callback url (``http://example.org/itn/callback``).
@@ -162,6 +162,7 @@ chainKit.createWallet(options, callback)
 ```
 - ``options`` - ***required***.
 - ``options.type`` - ***required***. Wallet type (``ETH``).
+- ``options.secret`` - ***required***. Secret (``secret123``).
 - ``callback`` - ***required*** callback function, accepts 2 values (``error``,``result``)
 
 Example request
@@ -201,6 +202,7 @@ chainKit.sendTransaction(options, callback)
 - ``options.type`` - ***required***. Transaction type. (``ETH``).
 - ``options.to`` - ***required***. Receiver's address
 - ``options.token`` - ***required***. Wallet token
+- ``options.secret`` - ***required***. Secret (``secret123``).
 - ``callback`` - ***required*** callback function, accepts 2 values (``error``,``result``)
 
 Example request

@@ -54,7 +54,8 @@ class ChainKit {
       method: 'POST',
       json: {
         type: options.type,
-        accessKey: this.accessKey
+        accessKey: this.accessKey,
+        secret: options.secret
       }
     }, (error, response, body) => {
       if (error) callback(error);
@@ -71,7 +72,8 @@ class ChainKit {
         type: options.type,
         to: options.to,
         token: options.token,
-        accessKey: this.accessKey
+        accessKey: this.accessKey,
+        secret: options.secret
       }
     }, (error, response, body) => {
       if (error) callback(error);
