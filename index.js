@@ -55,7 +55,8 @@ class ChainKit {
       json: {
         type: options.type,
         accessKey: this.accessKey,
-        secret: options.secret
+        secret: options.secret,
+        options: options.options
       }
     }, (error, response, body) => {
       if (error) callback(error);
@@ -68,8 +69,8 @@ class ChainKit {
       url: `${this.apiGatewayBaseUrl}/v1/wallet/sendTransaction`,
       method: 'POST',
       json: {
+        walletId: options.walletId,
         amount: options.amount,
-        type: options.type,
         to: options.to,
         token: options.token,
         accessKey: this.accessKey,

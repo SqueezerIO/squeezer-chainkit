@@ -134,16 +134,12 @@ Example response from server
   "message":"success",
   "data":[
     {
-      "type":"ETH",
+      "type":"ethereum",
       "info":"Ethereum wallet."
     },
     {
-      "type":"BTC",
-      "info":"Bitcoin wallet."
-    },
-    {
-      "type":"BTC",
-      "info":"Bitcoin wallet."
+      "type":"stellar",
+      "info":"Stellar wallet."
     }
   ]
 }
@@ -163,12 +159,17 @@ chainKit.createWallet(options, callback)
 - ``options`` - ***required***.
 - ``options.type`` - ***required***. Wallet type (``ETH``).
 - ``options.secret`` - ***required***. Secret (``secret123``).
+- ``options.options`` - ***required***. Options object.
 - ``callback`` - ***required*** callback function, accepts 2 values (``error``,``result``)
 
 Example request
 ```javascript
 chainKit.createWallet({
-  type: 'ETH'
+  type: 'ethereum',
+  options: {
+    asset: 'ETH',
+    assetType: 'native'
+  }
 }, (err, response) => {
   console.log(response)
 });
@@ -199,7 +200,7 @@ chainKit.sendTransaction(options, callback)
 ```
 - ``options`` - ***required***.
 - ``options.amount`` - ***required***. Amount to send, 8 decimal max. (``0.01``).
-- ``options.type`` - ***required***. Transaction type. (``ETH``).
+- ``options.walltId`` - ***required***. wallet id. (``ETH``).
 - ``options.to`` - ***required***. Receiver's address
 - ``options.token`` - ***required***. Wallet token
 - ``options.secret`` - ***required***. Secret (``secret123``).
@@ -209,7 +210,7 @@ Example request
 ```javascript
 chainKit.sendTransaction({
   amount: 0.01,
-  type: 'ETH',
+  walletId: '1dd2e289-8f80-4b4a-8592-xxxxxxxxxxx',
   to: '0x207E1a4F3Ab910D2164bC3646CFD0aF697f86713',
   token: "41dbecfb04541........"
 }, (err, response) => {
