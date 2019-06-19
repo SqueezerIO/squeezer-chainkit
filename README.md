@@ -140,6 +140,10 @@ Example response from server
     {
       "type":"stellar",
       "info":"Stellar wallet."
+    },
+    {
+      "type":"wavesplatform",
+      "info":"Waves platform wallet."
     }
   ]
 }
